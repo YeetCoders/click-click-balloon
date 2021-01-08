@@ -1,2 +1,8 @@
 .App {
 }
+
+// undo no side padding for vertical segment
+.ui.vertical.segment {
+  padding-left: 1em;
+  padding-right: 1em;
+}

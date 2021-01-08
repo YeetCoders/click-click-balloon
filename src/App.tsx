@@ -1,9 +1,10 @@
+import Routes from "./routes";
 import "./App.scss";
 
 function App() {
   return (
     <div className="App">
-      <h1>Click Click Balloon</h1>
+      <Routes />
     </div>
   );
 }
