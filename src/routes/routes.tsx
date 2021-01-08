@@ -5,8 +5,9 @@ import {
   Redirect,
 } from "react-router-dom";
 import HomePage from "../components/home-page";
+import LeaderboardPage from "../components/leaderboard-page";
 import PlayPage from "../components/play-page";
-import { HOME_PATH, PLAY_PATH } from "./paths";
+import { HOME_PATH, PLAY_PATH, LEADERBOARD_PATH } from "./paths";
 
 function Routes() {
   return (
@@ -18,6 +19,10 @@ function Routes() {
 
         <Route exact strict path={PLAY_PATH}>
           <PlayPage />
+        </Route>
+
+        <Route exact strict path={LEADERBOARD_PATH}>
+          <LeaderboardPage />
         </Route>
 
         <Route>
