@@ -1,0 +1,14 @@
+.play-page {
+  .action-buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .meta-data-container {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
