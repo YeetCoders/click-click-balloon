@@ -85,6 +85,7 @@ function PlayPage() {
               restartKey={restartKey}
             />
           </h1>
+
           <Divider />
 
           <h1>Click count: {clickCount}</h1>
