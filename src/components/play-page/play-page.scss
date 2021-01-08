@@ -4,4 +4,24 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  .balloon-container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    height: 500px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .balloon {
+    margin: auto;
+    align-self: end;
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
 }

@@ -6,6 +6,7 @@ import {
   TransitionablePortal,
   Modal,
   Header,
+  Image,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Confetti from "react-confetti";
@@ -13,6 +14,7 @@ import { useWindowSize } from "react-use";
 import { HOME_PATH } from "../../routes/paths";
 import "./play-page.scss";
 import CountdownTimer from "../countdown-timer/countdown-timer";
+import balloonImage from "./assets/balloon.png";
 
 const duration = 30;
 
@@ -26,7 +28,6 @@ function PlayPage() {
     if (!isTimerActive) {
       return;
     }
-
     setClickCount((_clickCount) => _clickCount + 1);
   }, [isTimerActive]);
 
@@ -36,6 +37,10 @@ function PlayPage() {
   }, []);
 
   const onStart = useCallback(() => setTimerActive(true), []);
+
+  const getBalloonWidth = () => {
+    return 10 + (clickCount / 1000) * 100;
+  };
 
   return (
     <div className="play-page">
@@ -72,13 +77,13 @@ function PlayPage() {
 
           <h1>Click count: {clickCount}</h1>
         </div>
-
-        <Segment
-          placeholder
-          onContextMenu={(e: SyntheticEvent) => e.preventDefault()}
-          onClick={updateClickCount}
-        >
-          <h2>Click here</h2>
+        <Segment className="balloon-container">
+          <Image
+            className="balloon"
+            src={balloonImage}
+            onClick={updateClickCount}
+            style={{ width: `${getBalloonWidth()}%` }}
+          />
         </Segment>
       </Segment>
 
