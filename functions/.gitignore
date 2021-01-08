@@ -10,3 +10,6 @@ typings/
 
 # Node.js dependency directory
 node_modules/
+
+# confidential credentials
+spasticballoon-e89ac-firebase-adminsdk-k0a8a-4f72807f03.json
