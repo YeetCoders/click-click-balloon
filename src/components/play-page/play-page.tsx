@@ -21,6 +21,7 @@ function PlayPage() {
   const [clickCount, setClickCount] = useState(0);
   const [isCompleted, setCompleted] = useState(false);
   const { width, height } = useWindowSize();
+  const [restartKey, setRestartKey] = useState(false);
 
   const updateClickCount = useCallback(() => {
     if (!isTimerActive) {
@@ -37,6 +38,12 @@ function PlayPage() {
 
   const onStart = useCallback(() => setTimerActive(true), []);
 
+  const onReset = useCallback(() => {
+    setRestartKey((_restartKey) => !_restartKey);
+    setClickCount(0);
+    setCompleted(false);
+  }, []);
+
   return (
     <div className="play-page">
       {isCompleted && (
@@ -50,13 +57,22 @@ function PlayPage() {
       )}
 
       <Segment vertical>
-        <Button
-          as={Link}
-          to={HOME_PATH}
-          color="black"
-          content="Back"
-          icon="angle left"
-        />
+        <div className="action-buttons-container">
+          <Button
+            as={Link}
+            to={HOME_PATH}
+            color="black"
+            content="Back"
+            icon="angle left"
+          />
+
+          <Button
+            icon="refresh"
+            color="blue"
+            content="Reset"
+            onClick={onReset}
+          />
+        </div>
       </Segment>
 
       <Segment vertical textAlign="center">
@@ -66,6 +82,7 @@ function PlayPage() {
               seconds={duration}
               onComplete={onComplete}
               onStart={onStart}
+              restartKey={restartKey}
             />
           </h1>
           <Divider />
@@ -75,7 +92,10 @@ function PlayPage() {
 
         <Segment
           placeholder
-          onContextMenu={(e: SyntheticEvent) => e.preventDefault()}
+          onContextMenu={(e: SyntheticEvent) => {
+            e.preventDefault();
+            updateClickCount();
+          }}
           onClick={updateClickCount}
         >
           <h2>Click here</h2>

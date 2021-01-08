@@ -42,6 +42,7 @@ module.exports = {
     ],
     "@typescript-eslint/no-unused-expressions": "off",
     "react/react-in-jsx-scope": "off",
+    "react/require-default-props": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
   },

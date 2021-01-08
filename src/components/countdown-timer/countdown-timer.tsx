@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import Countdown, { zeroPad, CountdownRenderProps } from "react-countdown";
 
 type Props = {
   seconds: number;
   onComplete: () => void;
   onStart: () => void;
+  restartKey?: unknown;
 };
 
 const countdownView = ({
@@ -17,15 +18,19 @@ const countdownView = ({
   </span>
 );
 
-function CountdownTimer({ seconds, onComplete, onStart }: Props) {
-  const initialTimer = useMemo(() => Date.now() + seconds * 1000, [seconds]);
+function CountdownTimer({ seconds, onComplete, onStart, restartKey }: Props) {
+  const [initialTimer, setInitialTimer] = useState(Date.now() + seconds * 1000);
+
+  useEffect(() => {
+    setInitialTimer(Date.now() + seconds * 1000);
+  }, [seconds, restartKey]);
 
   return (
     <Countdown
+      key={initialTimer}
       onComplete={onComplete}
       onStart={onStart}
       date={initialTimer}
-      autoStart
       precision={3}
       intervalDelay={0}
       renderer={countdownView}
