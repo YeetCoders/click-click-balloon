@@ -1,8 +1,21 @@
 .App {
+  font-family: "Courgette", cursive !important;
   background-image: url(./assets/bg.jpg);
   height: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.ui {
+  font-family: "Courgette", cursive !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Courgette", cursive !important;
 }
 
 .vertical-space-margin > * {
