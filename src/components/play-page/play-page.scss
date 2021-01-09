@@ -1,4 +1,8 @@
 .play-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   .action-buttons-container {
     display: flex;
     flex-direction: row;
@@ -6,29 +10,27 @@
     align-items: center;
   }
 
-  .meta-data-container {
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .balloon-container {
-    margin-left: auto;
-    margin-right: auto;
-    width: 700px;
-    height: 500px;
+  .gameplay-container {
     display: flex;
-    align-items: flex-end;
-  }
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
 
-  .balloon {
-    margin: auto;
-    align-self: end;
-    -khtml-user-select: none;
-    -o-user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-    -webkit-user-drag: none;
+    .balloon-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 1;
+
+      .balloon {
+        width: auto;
+        -khtml-user-select: none;
+        -o-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-user-drag: none;
+      }
+    }
   }
 }

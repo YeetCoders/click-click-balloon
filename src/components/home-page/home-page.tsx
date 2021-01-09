@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Button,
   Dropdown,
@@ -7,7 +7,7 @@ import {
 } from "semantic-ui-react";
 import { useLocalStorage } from "react-use";
 import { Link } from "react-router-dom";
-import { LEADERBOARD_PATH, PLAY_PATH } from "../../routes/paths";
+import { PLAY_PATH } from "../../routes/paths";
 import { ChallengeCategory } from "../../types";
 import "./home-page.scss";
 
@@ -70,13 +70,13 @@ function HomePage() {
             content="Play"
           />
         </div>
-        <Button
+        {/* <Button
           as={Link}
           to={LEADERBOARD_PATH}
           icon="trophy"
           color="teal"
           content="Leaderboard"
-        />
+        />  */}
       </Segment>
     </div>
   );

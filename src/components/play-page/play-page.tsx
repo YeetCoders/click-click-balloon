@@ -18,8 +18,6 @@ import { parseCategoryToDuration } from "../../utils";
 import { ChallengeCategory } from "../../types";
 import "./play-page.scss";
 
-const duration = 30;
-
 function PlayPage() {
   const history = useHistory();
   const { category } = useParams<{ category: string }>();
@@ -55,9 +53,6 @@ function PlayPage() {
 
   const onStart = useCallback(() => setTimerActive(true), []);
 
-  const getBalloonWidth = () => {
-    return 10 + (clickCount / 1000) * 100;
-  };
   const onReset = useCallback(() => {
     setRestartKey((_restartKey) => !_restartKey);
     setClickCount(0);
@@ -95,8 +90,8 @@ function PlayPage() {
         </div>
       </Segment>
 
-      <Segment vertical textAlign="center">
-        <div className="meta-data-container">
+      <Segment className="gameplay-container" vertical textAlign="center">
+        <div>
           <h1>
             <CountdownTimer
               seconds={totalDuration}
@@ -110,14 +105,24 @@ function PlayPage() {
 
           <h1>Click count: {clickCount}</h1>
         </div>
-        <Segment className="balloon-container">
+
+        <div className="balloon-container">
           <Image
             className="balloon"
             src={balloonImage}
             onClick={updateClickCount}
-            style={{ width: `${getBalloonWidth()}%` }}
+            onContextMenu={(e: SyntheticEvent) => {
+              e.preventDefault();
+              updateClickCount();
+            }}
+            style={{
+              height: `${Math.min(
+                height * 0.6,
+                30 + (height * clickCount) / 500,
+              )}px`,
+            }}
           />
-        </Segment>
+        </div>
       </Segment>
 
       <TransitionablePortal
